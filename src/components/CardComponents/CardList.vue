@@ -22,7 +22,11 @@
       </div>
     </div>
     <div v-else>
-      <b-table striped hover :items="cards" :fields="fields" primary-key="id">
+      <b-table responsive striped hover :items="cards" :fields="fields" primary-key="id">
+        <!-- CROPPED IMG -->
+        <template slot=[image_uris] slot-scope="data">
+          <img :src="data.item.image_uris.art_crop" alt="" width="150">
+        </template>
         <!-- COLORS -->
         <template slot=[colors] slot-scope="data">
           <i v-for="c in data.item.colors" :key="c" :class="`ms ms-${c.toLowerCase()}`"></i>
@@ -46,12 +50,23 @@ export default {
     return {
       type: 'list',
       fields: [
+        {
+          key: 'image_uris',
+          label: 'Image'
+        },
         'name',
         'mana_cost',
-        'set',
+        {
+          key: 'type_line',
+          label: 'Type'
+        },
+        {
+          key: 'oracle_text',
+          label: 'Description'
+        },
+        'set_name',
         'rarity',
-        'colors',
-        'cmc'
+        'colors'
       ]
     }
   },
