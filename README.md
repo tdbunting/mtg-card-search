@@ -1,4 +1,4 @@
-# web.deck-creator
+# mtg-card-searcher
 
 ## Project setup
 ```
