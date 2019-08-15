@@ -81,7 +81,6 @@ export default {
       let images = card.image_uris
       if (!images) {
         images = card.card_faces[0].image_uris
-        console.log('no image uri/double faced card')
       }
       return images.art_crop
     }
