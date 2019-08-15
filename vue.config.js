@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/mtg-card-search/',
+  publicPath: process.env.NODE_ENV === 'production' ? '/mtg-card-search/' : '/',
   css: {
     loaderOptions: {
       sass: {
