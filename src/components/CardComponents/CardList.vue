@@ -25,7 +25,7 @@
       <b-table responsive striped hover :items="cards" :fields="fields" primary-key="id">
         <!-- CROPPED IMG -->
         <template slot=[image_uris] slot-scope="data">
-          <img :src="data.item.image_uris.art_crop" alt="" width="150">
+          <img :src="croppedArtwork(data.item)" alt="" width="150">
         </template>
         <!-- COLORS -->
         <template slot=[colors] slot-scope="data">
@@ -76,6 +76,14 @@ export default {
     },
     convertToIcons (cost) {
       return cost.match(/[^{}]+(?=})/g)
+    },
+    croppedArtwork (card) {
+      let images = card.image_uris
+      if (!images) {
+        images = card.card_faces[0].image_uris
+        console.log('no image uri/double faced card')
+      }
+      return images.art_crop
     }
   }
 }
